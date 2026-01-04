@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.QuadModify"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ReservaModify"
+            android:exported="false" />
+
+        <!-- Lists -->
+        <activity
+            android:name=".ui.GM122_QuadsList"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.GM122_ReservasList"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.QuadDetail"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ReservaDetail"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ReservaSelectQuads"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ReservaConfirm"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.TestQuadActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.TestReservaActivity"
+            android:exported="false" />
+
+        <!-- Main activity -->
+        <activity
+            android:name=".ui.GM122_quads"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

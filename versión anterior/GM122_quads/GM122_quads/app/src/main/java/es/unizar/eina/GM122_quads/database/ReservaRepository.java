@@ -1,0 +1,183 @@
+package es.unizar.eina.GM122_quads.database;
+
+
+import static es.unizar.eina.GM122_quads.database.Quad_Reserva_RoomDataBase.databaseWriteExecutor;
+
+import android.app.Application;
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+/**
+ * Clase que gestiona el acceso la fuente de datos.
+ * Interacciona con la base de datos a través de las clases ReservaRoomDatabase y ReservaDao.
+ *
+ * @author GM122
+ */
+public class ReservaRepository {
+
+    private final ReservaDao mReservaDao;
+    private final LiveData<List<Reserva>> mAllReservas;
+
+    private final long TIMEOUT = 15000;
+
+    /**
+     * Constructor de ReservaRepository utilizando el contexto de la aplicación para instanciar la base de datos.
+     * Alternativamente, se podría estudiar la instanciación del repositorio con una referencia a la base de datos
+     * siguiendo el ejemplo de
+     * <a href="https://github.com/android/architecture-components-samples/blob/main/BasicSample/app/src/main/java/com/example/android/persistence/DataRepository.java">architecture-components-samples/.../persistence/DataRepository</a>
+     */
+    public ReservaRepository(Application application) {
+        Quad_Reserva_RoomDataBase db = Quad_Reserva_RoomDataBase.getDatabase(application);
+        mReservaDao = db.reservaDao();
+        mAllReservas = mReservaDao.getReservasOrderByNombre();
+    }
+
+    /** Devuelve un objeto de tipo LiveData con todas las reservas.
+     * Room ejecuta todas las consultas en un hilo separado.
+     * El objeto LiveData notifica a los observadores cuando los datos cambian.
+     */
+    public LiveData<List<Reserva>> getAllReservas() {
+        return mAllReservas;
+    }
+
+    /** Devuelve un objeto de tipo LiveData con todas las reservas
+    ordenadas por nombre del cliente */
+    public LiveData<List<Reserva>> getReservasOrderByNombre() {
+        return mReservaDao.getReservasOrderByNombre();
+    }
+
+    /** Devuelve un objeto de tipo LiveData con todas las reservas
+     ordenadas por telefono del cliente */
+    public LiveData<List<Reserva>> getReservasOrderByTelefono() {
+        return mReservaDao.getReservasOrderByTelefono();
+    }
+
+    /** Devuelve un objeto de tipo LiveData con todas las reservas
+     ordenadas por fecha de recogida */
+    public LiveData<List<Reserva>> getReservasOrderByFechaRecogida() {
+        return mReservaDao.getReservasOrderByFechaRecogida();
+    }
+
+    /** Devuelve un objeto de tipo LiveData con todas las reservas
+     ordenadas por fecha de devolución */
+    public LiveData<List<Reserva>> getReservasOrderByFechaDevolucion() {
+        return mReservaDao.getReservasOrderByFechaDevolucion();
+    }
+
+
+    /** Inserta una reserva nueva en la base de datos
+     * @param reserva El reserva consta de: un nombre de cliente (reserva.getNombreCliente()) no nulo
+     *                (reserva.getNombreCliente()!=null) y no vacío (reserva.getNombreCliente().length()>0);
+     *                un móvil del cliente (reserva.getMovilCliente()) no nulo; una fecha de recogida
+     *                (reserva.getFechaRecogida()) no nula; una fecha de devolución (reserva.getFechaDevolucion())
+     *                no nula; un número de quads reservados (reserva.getQuadsReservados()) no nulo;
+     *               y un precio de la reserva (reserva.getPrecio()) no nulo y no vacío.
+     * @return Si la reserva se ha insertado correctamente, devuelve el id de la reserva que se ha creado. En caso
+     *         contrario, devuelve -1 para indicar el fallo.
+     */
+    public long insert(Reserva reserva) {
+        /* Para que la App funcione correctamente y no lance una excepción, la modificación de la
+         * base de datos se debe lanzar en un hilo de ejecución separado
+         * (databaseWriteExecutor.submit). Para poder sincronizar la recuperación del resultado
+         * devuelto por la base de datos, se puede utilizar un Future.
+         */
+        Future<Long> future = databaseWriteExecutor.submit(
+                () -> mReservaDao.insert(reserva));
+        try {
+            return future.get(TIMEOUT, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
+            Log.d("ReservaRepository", ex.getClass().getSimpleName() + ex.getMessage());
+            return -1;
+        }
+    }
+
+    public long insertAndReturnId(Reserva reserva) {
+        Future<Long> future =
+                Quad_Reserva_RoomDataBase.databaseWriteExecutor.submit(
+                        () -> mReservaDao.insertAndReturnId(reserva)
+                );
+
+        try {
+            return future.get();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    /** Actualiza una reserva en la base de datos
+     * @param reserva La reserva que se desea actualizar y que consta de: un nombre de cliente
+     *                (reserva.getNombreCliente()) no nulo (reserva.getNombreCliente()!=null) y no
+     *                vacío (reserva.getNombreCliente().length()>0); un móvil del cliente
+     *                (reserva.getMovilCliente()) no nulo; una fecha de recogida (reserva.getFechaRecogida())
+     *                no nula; una fecha de devolución (reserva.getFechaDevolucion()) no nula; un número
+     *                de quads reservados (reserva.getQuadsReservados()) no nulo; y un precio de la
+     *                reserva (reserva.getPrecio()) no nulo y no vacío.
+     * @return Un valor entero con el número de filas modificadas: 1 si el id se corresponde con una reserva
+     *         previamente insertada; 0 si no existe previamente una reserva con ese id, o hay algún problema
+     *         con los atributos.
+     */
+    public int update(Reserva reserva) {
+        Future<Integer> future = databaseWriteExecutor.submit(
+                () -> mReservaDao.update(reserva));
+        try {
+            return future.get(TIMEOUT, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
+            Log.d("ReservaRepository", ex.getClass().getSimpleName() + ex.getMessage());
+            return -1;
+        }
+    }
+
+
+    /** Elimina una reserva en la base de datos.
+     * @param reserva Objeto reserva cuyo atributo id (reserva.getId()) contiene la clave primaria de la reserva que se
+     *             va a eliminar de la base de datos. Se debe cumplir: reserva.getId() > 0. ??????????????????????????????????? o igual?
+     * @return Un valor entero con el número de filas eliminadas: 1 si el id se corresponde con una reserva
+     *         previamente insertada; 0 si no existe previamente una reserva con ese id o el id no es
+     *         un valor aceptable.
+     */
+    public int delete(Reserva reserva) {
+        Future<Integer> future = databaseWriteExecutor.submit(
+                () -> mReservaDao.delete(reserva));
+        try {
+            return future.get(TIMEOUT, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
+            Log.d("ReservaRepository", ex.getClass().getSimpleName() + ex.getMessage());
+            return -1;
+        }
+    }
+
+    /**
+     * Devuelve true si el quad está disponible en la fecha dada.
+     * @param matricula
+     * @param fechaInicio
+     * @param fechaFin
+     * @return
+     */
+    public boolean isQuadAvailable(String matricula, long fechaInicio, long fechaFin) {
+        try {
+            int overlaps = databaseWriteExecutor.submit(
+                    () -> mReservaDao.countOverlappingReservationsForQuad(
+                            matricula,
+                            fechaInicio,
+                            fechaFin
+                    )
+            ).get();
+
+            return overlaps == 0;
+
+        } catch (Exception e) {
+            Log.e("ReservaRepository", "Error comprobando disponibilidad", e);
+            return false;
+        }
+
+    }
+
+}
