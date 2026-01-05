@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/confirm_reserva"
             android:textSize="20sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="4dp"
-        android:background="@color/text_primary"
+        android:background="@color/color_dark"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cliente:"
                 android:textSize="14sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_regular"/>
 
             <TextView
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="Del fechaInicio al fechaFin"
                 android:textSize="14sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_marginTop="6dp"/>
         </LinearLayout>
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:text="@string/selected_quads"
             android:textSize="16sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             android:layout_marginTop="20dp"/>
 
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/precio_total"
                 android:textSize="14sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_regular"/>
 
             <TextView
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:text="XX €"
                 android:textSize="24sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>
@@ -157,11 +157,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_cancel"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorCancel"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_confirm"
@@ -169,11 +169,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="@string/button_save"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorSave"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

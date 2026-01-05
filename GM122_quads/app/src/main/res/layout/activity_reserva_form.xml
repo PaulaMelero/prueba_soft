@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/reserva_form_title"
             android:textSize="20sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="4dp"
-        android:background="@color/text_primary"
+        android:background="@color/color_dark"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -72,7 +72,7 @@
                 android:layout_weight="1"
                 android:text="@string/id"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <TextView
@@ -82,7 +82,7 @@
                 android:layout_weight="2"
                 android:text="#----"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="12dp"/>
         </LinearLayout>
@@ -101,7 +101,7 @@
                 android:layout_weight="1"
                 android:text="@string/nombre_cliente"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <EditText
@@ -134,7 +134,7 @@
                 android:layout_weight="1"
                 android:text="@string/movil"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <EditText
@@ -166,7 +166,7 @@
                 android:layout_weight="1"
                 android:text="@string/fecha_recogida"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <TextView
@@ -176,7 +176,7 @@
                 android:layout_weight="2"
                 android:padding="12dp"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:background="@drawable/item_background"
                 android:hint="@string/hint_fecha"
                 android:focusable="false"
@@ -199,7 +199,7 @@
                 android:layout_weight="1"
                 android:text="@string/fecha_devolucion"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <TextView
@@ -209,7 +209,7 @@
                 android:layout_weight="2"
                 android:padding="12dp"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:background="@drawable/item_background"
                 android:hint="@string/hint_fecha"
                 android:focusable="false"
@@ -241,11 +241,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_cancel"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorCancel"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_continue"
@@ -253,11 +253,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="@string/button_continue"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorSave"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
 
     </LinearLayout>
 

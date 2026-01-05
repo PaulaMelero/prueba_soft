@@ -152,7 +152,7 @@ public class GM122_QuadsList extends AppCompatActivity {
     private void showDeleteDialog(String quad) {
 
         new com.google.android.material.dialog.MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.delete_quad_title)
+                .setTitle(R.string.delete_quad)
                 .setMessage(
                         getString(R.string.delete_quad_message, quad)
                 )

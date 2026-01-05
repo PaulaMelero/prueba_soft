@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/reserva_detail"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="4dp"
-        android:background="@color/text_primary"
+        android:background="@color/color_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
@@ -90,9 +90,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/delete"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             app:backgroundTint="@color/colorCancel"
-            app:strokeColor="@color/text_primary"
+            app:strokeColor="@color/color_dark"
             app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -102,9 +102,9 @@
             android:layout_marginStart="30dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/button_edit"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             app:backgroundTint="@color/colorSave"
-            app:strokeColor="@color/text_primary"
+            app:strokeColor="@color/color_dark"
             app:strokeWidth="2dp" />
 
         <Button

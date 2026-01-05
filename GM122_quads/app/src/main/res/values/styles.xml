@@ -23,7 +23,7 @@
     <style name="MainButton" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_height">60dp</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">@color/color_dark</item>
 
         <!-- Fuente personalizada -->
         <item name="android:fontFamily">@font/poppins_bold</item>

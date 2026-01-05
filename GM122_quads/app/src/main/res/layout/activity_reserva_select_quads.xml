@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/select_quads"
             android:textSize="20sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="4dp"
-        android:background="@color/text_primary"
+        android:background="@color/color_dark"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -76,7 +76,7 @@
             android:text="@string/quad_not_available"
             android:gravity="center"
             android:textSize="16sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             android:padding="24dp"
             android:visibility="gone"/>
@@ -102,11 +102,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_continue"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorSave"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

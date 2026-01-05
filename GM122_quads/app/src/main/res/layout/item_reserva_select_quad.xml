@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:scaleX="1.2"
         android:scaleY="1.2"
-        android:buttonTint="@color/text_primary"
+        android:buttonTint="@color/color_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="0000XXX"
         android:textSize="16sp"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/color_dark"
         android:fontFamily="@font/poppins_bold"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Monoplaza"
         android:textSize="14sp"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/color_dark"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="@id/quad_matricula"
         app:layout_constraintEnd_toEndOf="@id/quad_matricula"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Cascos"
             android:textSize="12sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="4dp"/>
 
@@ -93,7 +93,7 @@
                 android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:fontFamily="@font/poppins_bold"/>

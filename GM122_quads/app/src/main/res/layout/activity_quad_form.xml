@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/quad_form_title"
             android:textSize="20sp"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="4dp"
-        android:background="@color/text_primary"
+        android:background="@color/color_dark"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:text="@string/matricula"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <EditText
@@ -84,7 +84,7 @@
                 android:padding="12dp"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:inputType="textCapCharacters"
                 android:minHeight="48dp"
                 android:importantForAutofill="no" />
@@ -104,7 +104,7 @@
                 android:layout_weight="1"
                 android:text="@string/tipo"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <RadioGroup
@@ -150,7 +150,7 @@
                 android:layout_weight="1"
                 android:text="@string/precio"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <EditText
@@ -181,7 +181,7 @@
                 android:layout_weight="1"
                 android:text="@string/descripcion"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/color_dark"
                 android:fontFamily="@font/poppins_bold"/>
 
             <EditText
@@ -220,11 +220,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_cancel"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorCancel"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_save"
@@ -232,11 +232,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="@string/button_save"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/color_dark"
             android:fontFamily="@font/poppins_bold"
             app:backgroundTint="@color/colorSave"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/text_primary"/>
+            app:strokeColor="@color/color_dark"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
