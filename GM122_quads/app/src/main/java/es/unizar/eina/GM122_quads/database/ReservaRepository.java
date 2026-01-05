@@ -15,6 +15,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import es.unizar.eina.GM122_quads.utils.IdCallback;
+
+
 /**
  * Clase que gestiona el acceso la fuente de datos.
  * Interacciona con la base de datos a través de las clases ReservaRoomDatabase y ReservaDao.
@@ -42,6 +45,14 @@ public class ReservaRepository {
         mAllReservas = mReservaDao.getReservasOrderByNombre();
         mReservaQuadCascosDao = db.reservaQuadCascosDao();
     }
+
+    public void insertAndReturnIdAsync(Reserva reserva, IdCallback callback) {
+        databaseWriteExecutor.execute(() -> {
+            long id = mReservaDao.insert(reserva);
+            callback.onInserted(id);
+        });
+    }
+
 
     /** Devuelve un objeto de tipo LiveData con todas las reservas.
      * Room ejecuta todas las consultas en un hilo separado.
@@ -187,6 +198,11 @@ public class ReservaRepository {
         return 0;
     }
 
+    /**
+     * Inserta una reserva nueva en la base de datos y devuelve su id.
+     * @param reserva
+     * @return
+     */
     public long insertAndReturnId(Reserva reserva) {
         if (reservaValida(reserva)) {
 
@@ -252,31 +268,11 @@ public class ReservaRepository {
     }
 
     /**
-     * Devuelve true si el quad está disponible en la fecha dada.
-     * @param matricula
+     * Recalcula el precio de una reserva
+     * @param reservaId
      * @param fechaInicio
      * @param fechaFin
-     * @return
      */
-    public boolean isQuadAvailable(String matricula, long fechaInicio, long fechaFin) {
-        try {
-            int overlaps = databaseWriteExecutor.submit(
-                    () -> mReservaDao.countOverlappingReservationsForQuad(
-                            matricula,
-                            fechaInicio,
-                            fechaFin
-                    )
-            ).get();
-
-            return overlaps == 0;
-
-        } catch (Exception e) {
-            Log.e("ReservaRepository", "Error comprobando disponibilidad", e);
-            return false;
-        }
-
-    }
-
     public void recalcularPrecioReserva(int reservaId, long fechaInicio, long fechaFin) {
 
         databaseWriteExecutor.execute(() -> {

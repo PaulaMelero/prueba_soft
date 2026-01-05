@@ -77,5 +77,8 @@ public class ReservaViewModel extends AndroidViewModel {
         mRepository.recalcularPrecioReserva(reservaId, fechaInicio, fechaFin);
     }
 
+    public void insertAndReturnIdAsync(Reserva reserva, es.unizar.eina.GM122_quads.utils.IdCallback callback) {
+        mRepository.insertAndReturnIdAsync(reserva, callback);
+    }
 
 }

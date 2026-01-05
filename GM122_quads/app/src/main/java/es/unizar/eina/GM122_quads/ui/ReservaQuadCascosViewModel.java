@@ -61,5 +61,12 @@ public class ReservaQuadCascosViewModel extends AndroidViewModel {
     public Map<String, Double> getPreciosParaReserva(int id, Map<String, Integer> cascosPorQuad) {
         return mRepository.getPreciosParaReserva(id, cascosPorQuad);
     }
+
+    public void getPreciosParaReservaAsync(int reservaId,
+                                           Map<String,Integer> seleccion,
+                                           java.util.function.Consumer<Map<String,Double>> cb) {
+        mRepository.getPreciosParaReservaAsync(reservaId, seleccion, cb);
+    }
+
 }
 

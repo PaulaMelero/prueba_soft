@@ -70,23 +70,6 @@ public class ReservaQuadCascosRepository {
         );
     }
 
-
-
-    /* =========================================================
-       VALIDACIÓN CASCOS
-       ========================================================= */
-    private boolean numCascosValido(Quad quad, int numCascos) {
-
-        if (numCascos < 0) return false;
-
-        // true = biplaza
-        if (quad.getTipo()) {
-            return numCascos <= 2;
-        } else {
-            return numCascos <= 1;
-        }
-    }
-
     /* =========================================================
        DELETE
        ========================================================= */
@@ -207,6 +190,15 @@ public class ReservaQuadCascosRepository {
         return precios;
     }
 
+    public void getPreciosParaReservaAsync(int reservaId,
+                                           Map<String,Integer> seleccion,
+                                           java.util.function.Consumer<Map<String,Double>> cb) {
+
+        databaseWriteExecutor.execute(() -> {
+            Map<String, Double> precios = getPreciosParaReserva(reservaId, seleccion);
+            new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> cb.accept(precios));
+        });
+    }
 
 
 }
